@@ -1,6 +1,16 @@
 let btn = document.getElementsByClassName("btn");
+
 let winnerInfo = document.getElementById("winnerInfo");
 let scoreInfo = document.getElementById("scoreInfo");
+
+let playerPick = document.getElementById("playerPick");
+let computerPick = document.getElementById("computerPick");
+
+let pickArr = [
+  "fa fa-hand-rock-o",
+  "fa fa-hand-paper-o",
+  "fa fa-hand-scissors-o",
+];
 
 let playerChoice;
 let computerChoice;
@@ -57,6 +67,9 @@ for (let i = 0; i < btn.length; i++) {
     playerChoice = Number(btn[i].value);
     computerChoice = Math.floor(Math.random() * 3) + 0;
 
+    playerPick.className = pickArr[playerChoice];
+    computerPick.className = pickArr[computerChoice];
+
     // Display of picks
     console.log(
       "Your pick: " +
@@ -66,13 +79,11 @@ for (let i = 0; i < btn.length; i++) {
     );
     // Display who win
     winnerInfo.textContent = checkWinner(playerChoice, computerChoice);
-    console.log(checkWinner(playerChoice, computerChoice));
+    console.log(winnerInfo.textContent);
     // Display score
     scoreInfo.textContent =
       "Your score: " + playerScore + ". Computer score: " + computerScore;
-    console.log(
-      "Your score: " + playerScore + ". Computer score: " + computerScore
-    );
+    console.log(scoreInfo.textContent);
   });
 }
 
